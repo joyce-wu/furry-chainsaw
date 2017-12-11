@@ -19,7 +19,6 @@ var addElement = function(e){
   el.addEventListener("mouseout", helloWorld);
   el.addEventListener("click", removeText);
   itemNum++;
-  console.log(list);
 };
 
 //changes text whenever mouse is over item
@@ -69,11 +68,10 @@ var fibButton = function(e){
   if(count == 0 || count == 1){
     item.innerHTML = fibonacci(count);
   }else{
-    var elements = document.getElementById("fibList").getElementsByTagName("LI");
-    console.log(parseInt(fibList[count]));
-    var num = parseInt(fibList[count]) + parseInt(fibList[count-1]);
-    console.log(num);
-    item.innerHTML = "" + num;
+    var li = document.getElementById("fibList").getElementsByTagName("LI");
+    var n = parseInt(li[count-1].innerHTML) + parseInt(li[count-2].innerHTML);
+    li[li.length] = n;
+    item.innerHTML = n;
   }
   fibList.appendChild(item);
   count++;
