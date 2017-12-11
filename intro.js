@@ -98,3 +98,35 @@ var testRand = function(){
 
 var studentButton = document.getElementById("studentBtn");
 studentButton.addEventListener("click", testRand);
+
+
+//outputs pascal's triangle line by line
+var pascalsTri = document.getElementById("pascalList");
+
+var pCount = 0;
+
+var pascalify = function(pCount){
+    var line = [];
+    if(pCount == 0){
+	line.push(1);
+	return line;
+    }
+    else{
+	for (i = 0; i < pCount; i++){
+	    var p = line[i] * (pCount-i) / (i+1);
+	    line.push(p);
+	    console.log(line);
+	    return line.toString();
+	}
+    }
+};
+
+var testPascal = function(){
+    var el = document.createElement("li");
+    el.innerHTML = pascalify(pCount);
+    pascalList.appendChild(el);
+    pCount++;
+}
+
+var pascalButton = document.getElementById("pascalsBtn");
+pascalButton.addEventListener("click", testPascal);
