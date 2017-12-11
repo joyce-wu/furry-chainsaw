@@ -1,6 +1,6 @@
 /**
 Team Furry Chainsaw
-Alessandro Cauthon & Joyce Wu
+Alessandro Cartegni & Joyce Wu
 SoftDev1 pd7
 HW16 -- Sequential Progression II: Electric Boogaloo...
 2017-12-08
@@ -44,10 +44,59 @@ var b = document.getElementById("b");
 b.addEventListener("click", addElement);
 
 //adds each event to each item in the original list
-var li = document.getElementsByTagName("LI");
+var li = document.getElementById("thelist").getElementsByTagName("LI");
 for (i = 0; i < li.length; i++){
-  console.log(li[i] + "yuh");
   li[i].addEventListener("mouseover", changeText);
   li[i].addEventListener("mouseout", helloWorld);
   li[i].addEventListener("click", removeText);
 };
+
+
+//phase IV
+//fibonacci function
+var fibonacci = function(n){
+    if(n == 0){return 0;}
+    else if (n == 1){return 1;}
+    else{return fibonacci(n-1) + fibonacci(n-2);}
+};
+
+var fibList = document.getElementById("fibList"); //retrieves fiblist
+var count = 0; //count for fibonacci
+
+//fibonacci button function
+var fibButton = function(e){
+  var item = document.createElement("li");
+  if(count == 0 || count == 1){
+    item.innerHTML = fibonacci(count);
+  }else{
+    var elements = document.getElementById("fibList").getElementsByTagName("LI");
+    console.log(parseInt(fibList[count]));
+    var num = parseInt(fibList[count]) + parseInt(fibList[count-1]);
+    console.log(num);
+    item.innerHTML = "" + num;
+  }
+  fibList.appendChild(item);
+  count++;
+};
+
+//adds event to fibonacci button
+var a = document.getElementById("fibButton");
+a.addEventListener("click", fibButton);
+
+//extra sequences
+//random student
+var studentList = document.getElementById("studentList");
+
+var student_list = [ 'Helen', 'Shakil', 'Eric', 'Jennifer Y', 'Jennifer Z', 'Arif', 'Queenie', 'Jawadul', 'Shaina', 'Vivien', 'Brian', 'Naotaka', 'Bayan', 'Adam', 'Caleb', 'Terry', 'Jason', 'Alessandro', 'Samantha', 'Carol', 'Joyce', 'Shannon', 'Charles', 'Taylor', 'Kelly', 'Leo', 'Khyber', 'Ibnul', 'Eugene', 'Yuyang', 'Karina', 'Tiffany', 'Holden', 'Michael'];
+var randomStudent = function(){
+    var rand_index = Math.trunc(Math.random() * student_list.length);
+    return student_list[rand_index];
+};
+var testRand = function(){
+    var el = document.createElement("li");
+    el.innerHTML = randomStudent();
+    studentList.appendChild(el);
+};
+
+var studentButton = document.getElementById("studentBtn");
+studentButton.addEventListener("click", testRand);
