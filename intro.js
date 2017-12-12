@@ -109,15 +109,15 @@ var pascalify = function(pCount){
     var line = [];
     if(pCount == 0){
 	line.push(1);
-	return line;
+	return line.toString();
     }
     else{
 	for (i = 0; i < pCount; i++){
 	    var p = line[i] * (pCount-i) / (i+1);
 	    line.push(p);
-	    console.log(line);
-	    return line.toString();
+
 	}
+	return line.toString();
     }
 };
 
