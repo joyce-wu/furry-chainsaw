@@ -102,30 +102,26 @@ studentButton.addEventListener("click", testRand);
 
 //outputs pascal's triangle line by line
 var pascalsTri = document.getElementById("pascalList");
-
 var pCount = 0;
-
+var line = [];
 var pascalify = function(pCount){
-    var line = [];
     if(pCount == 0){
-	line.push(1);
-	return line.toString();
-    }
-    else{
-	for (i = 0; i < pCount; i++){
-	    var p = line[i] * (pCount-i) / (i+1);
-	    line.push(p);
-
-	}
-	return line.toString();
+	     line[line.length] = 1;
+	     return line.toString();
+    }else{
+      for (i = 0; i < pCount; i++){
+	      var p = line[i] * (pCount-i) / (i+1);
+	      line[line.length] = p;
+	    }
+      return line.toString();
     }
 };
 
 var testPascal = function(){
-    var el = document.createElement("li");
-    el.innerHTML = pascalify(pCount);
-    pascalList.appendChild(el);
-    pCount++;
+  var el = document.createElement("li");
+  el.innerHTML = pascalify(pCount);
+  pascalList.appendChild(el);
+  pCount++;
 }
 
 var pascalButton = document.getElementById("pascalsBtn");
